@@ -1,6 +1,9 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+
+// CLUSTER => DATABASE => COLLECTION => DOCUMENT
+
 // console.log("PORT:", process.env.PORT);
 // console.log("MONGO_URL:", process.env.MONGO_URL);
 
