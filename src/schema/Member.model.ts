@@ -49,3 +49,4 @@ const memberSchema = new Schema({
 }, { timestamps: true });   
 
 export default mongoose.model('Member', memberSchema);
+
