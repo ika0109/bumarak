@@ -1,10 +1,20 @@
-function getPositive(sonlar) {
-  const musbatSonlar = sonlar.filter(num => num > 0);
-  return musbatSonlar.join('');
+function getDigits(a) {
+  return [...a].filter(belgi => belgi >= "0" && belgi <= "9").join("");
 }
 
 
-console.log(getPositive([1, -4, 2])); 
+console.log(getDigits("m14i1t")); 
+
+
+
+
+// function getPositive(sonlar) {
+//   const musbatSonlar = sonlar.filter(num => num > 0);
+//   return musbatSonlar.join('');
+// }
+
+
+// console.log(getPositive([1, -4, 2])); 
   
 
 
