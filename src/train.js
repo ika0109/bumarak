@@ -1,9 +1,26 @@
-function getDigits(a) {
-  return [...a].filter(belgi => belgi >= "0" && belgi <= "9").join("");
-}
+/* Project Standarts
+- Logging standarts
+- Naming standarts
+   function, method, variable => CAMEL    goHome
+   class => PASCAL                         MemberService      
+   folder => KEBAB
+   css => SNAKE                            button_style
+
+- Error Handling 
+*/
 
 
-console.log(getDigits("m14i1t")); 
+
+
+
+
+
+// function getDigits(a) {
+//   return [...a].filter(belgi => belgi >= "0" && belgi <= "9").join("");
+// }
+
+
+// console.log(getDigits("m14i1t")); 
 
 
 

@@ -1,4 +1,5 @@
 class MemberService {
-    constructor ()
-}
-export default MemberService;
+    constructor() {}
+  }
+  
+  export default MemberService;
