@@ -1,6 +1,6 @@
 import { ObjectId } from "mongoose";
 import { MemberStatus, MemberType } from "../enums/member.enum";
-
+//res
 export interface Member {
   _id: ObjectId;
   memberType: MemberType;
@@ -15,7 +15,7 @@ export interface Member {
   createdAt: Date;
   updatedAt: Date;
 }
-
+//req
 export interface MemberInput {
   memberType?: MemberType;
   memberStatus?: MemberStatus;

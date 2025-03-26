@@ -4,6 +4,7 @@ import MemberService from "../models/Member.service";
 import { LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 
+const memberService = new MemberService();
 const restaurantController: T = {};
 
 restaurantController.goHome = (req: Request, res: Response) => {
@@ -16,7 +17,14 @@ restaurantController.goHome = (req: Request, res: Response) => {
     console.log("Error goHOme", err);
   }
 };
-
+restaurantController.getSignup = (req: Request, res: Response) => {
+  try {
+    console.log("Signup Page");
+    res.send("Signup Page");
+  } catch (err) {
+    console.log("Error getSignup", err);
+  }
+};
 restaurantController.getLogin = (req: Request, res: Response) => {
   try {
     console.log("getLogin");
@@ -26,12 +34,20 @@ restaurantController.getLogin = (req: Request, res: Response) => {
   }
 };
 
-restaurantController.getSignup = (req: Request, res: Response) => {
+restaurantController.processSignup = async (req: Request, res: Response) => {
   try {
-    console.log("Signup Page");
-    res.send("Signup Page");
+    console.log("processSignup");
+
+    const newMember: MemberInput = req.body;
+
+    newMember.memberType = MemberType.RESTAURANT;
+
+    const result = await memberService.processSignup(newMember); // CALL
+
+    res.send(result);
   } catch (err) {
-    console.log("Error getSignup", err);
+    console.log("Error procssesSignup", err);
+    res.send(err);
   }
 };
 
@@ -41,29 +57,10 @@ restaurantController.processLogin = async (req: Request, res: Response) => {
     console.log("body", req.body);
     const input: LoginInput = req.body;
 
-    const memberService = new MemberService();
     const result = await memberService.processLogin(input);
     res.send(result);
   } catch (err) {
     console.log("Error procssesLogin", err);
-    res.send(err);
-  }
-};
-
-restaurantController.processSignup = async (req: Request, res: Response) => {
-  try {
-    console.log("processSignup");
-
-    const newMember: MemberInput = req.body;
-    //OBJECTNI   memberType Kiygatenglayabmiz
-    newMember.memberType = MemberType.RESTAURANT;
-    // yangi object           member server modilimizdan
-    const memberService = new MemberService();
-    const result = await memberService.processSignup(newMember); // CALL
-
-    res.send(result);
-  } catch (err) {
-    console.log("Error procssesSignup", err);
     res.send(err);
   }
 };

@@ -1,26 +1,30 @@
-function asosiy_element(massiv) {
- 
-   const element_soni = {};
-   
-   for (let element of massiv) {
-       element_soni[element] = (element_soni[element] || 0) + 1;
-   }
-
-   let eng_ko_p_soni = 0;
-   let asosiy_element = null;
-   
-   for (let element in element_soni) {
-       if (element_soni[element] > eng_ko_p_soni) {
-           eng_ko_p_soni = element_soni[element];
-           asosiy_element = element;
-       }
-   }
-   
-   return Number(asosiy_element);
+function findLongestWord(text) {
+   return text.split(' ').sort((a, b) => b.length - a.length)[0];
 }
 
+console.log(findLongestWord("Men O'zbekistonga kelding!")); // O'zbekistonga
 
-console.log(asosiy_element([1, 2, 3, 4, 5, 4, 3, 4]));  
+//    const element_soni = {};
+   
+//    for (let element of massiv) {
+//        element_soni[element] = (element_soni[element] || 0) + 1;
+//    }
+
+//    let eng_ko_p_soni = 0;
+//    let asosiy_element = null;
+   
+//    for (let element in element_soni) {
+//        if (element_soni[element] > eng_ko_p_soni) {
+//            eng_ko_p_soni = element_soni[element];
+//            asosiy_element = element;
+//        }
+//    }
+   
+//    return Number(asosiy_element);
+// }
+
+
+// console.log(asosiy_element([1, 2, 3, 4, 5, 4, 3, 4]));  
 
 
 
@@ -45,6 +49,15 @@ GrafphQL API
 ...
 */
 
+
+/* 
+
+Traditional FD => BSSR (Adminka) => EJS 
+Modern FD      => SPA (USer application) => REACT
+framework orqalik amalga oshiramiz
+JSON frontend backendan faqat json formatdagi datani qabul qiladi browserda joylashgan spa miz frontedni ozi quradi
+
+*/
 
 
 
