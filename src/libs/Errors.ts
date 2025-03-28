@@ -18,7 +18,6 @@ export enum Message {
   NO_MEMBER_NICK = "No member with that member nickname!",
   WRONG_PASSWORD = "Wrong password entered, Please try again!",
   NOT_AUTHENICATED = "You are not authenticated, Please login first!",
-  NOT_AUTHENTICATED = "NOT_AUTHENTICATED"
 }
 
 class Errors extends Error {
@@ -35,7 +34,6 @@ class Errors extends Error {
     this.code = statusCode;
     this.message = statusMessage;
   }
-
 }
 
 export default Errors;

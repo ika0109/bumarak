@@ -1,8 +1,4 @@
-function findLongestWord(text) {
-   return text.split(' ').sort((a, b) => b.length - a.length)[0];
-}
 
-console.log(findLongestWord("Men O'zbekistonga kelding!")); // O'zbekistonga
 
 //    const element_soni = {};
    
@@ -59,7 +55,8 @@ JSON frontend backendan faqat json formatdagi datani qabul qiladi browserda joyl
 
 */
 
-
+// Request join
+// self destroy
 
 
 
