@@ -1,3 +1,12 @@
+function countVowels(str) {
+   return [...str].filter(char => 'aeiou'.includes(char.toLowerCase())).length;
+}
+
+
+console.log(countVowels("string")); 
+console.log(countVowels("apple")); 
+console.log(countVowels("sun")); 
+
 
 
 //    const element_soni = {};
