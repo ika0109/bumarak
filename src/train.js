@@ -7,7 +7,11 @@ console.log(countVowels("string"));
 console.log(countVowels("apple")); 
 console.log(countVowels("sun")); 
 
-
+/**
+ * Frontend validatin
+ * backend validation
+ * Database validation
+ */
 
 //    const element_soni = {};
    
@@ -47,7 +51,7 @@ console.log(countVowels("sun"));
    css => SNAKE                            button_style
 
 - Error Handling 
-
+// Request
 Traditional API
 REST API
 GrafphQL API
@@ -63,7 +67,7 @@ framework orqalik amalga oshiramiz
 JSON frontend backendan faqat json formatdagi datani qabul qiladi browserda joylashgan spa miz frontedni ozi quradi
 
 */
-
+// Cookie
 // Request join
 // self destroy
 
