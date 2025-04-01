@@ -1,11 +1,22 @@
-function countVowels(str) {
-   return [...str].filter(char => 'aeiou'.includes(char.toLowerCase())).length;
+function reverseSentence(sentence) {
+  const words = sentence.split(" ");
+
+  const reversedWords = words.map((word) => {
+    return word.split("").reverse().join("");
+  });
+
+  return reversedWords.join(" ");
 }
 
+console.log(reverseSentence("we like coding!"));
 
-console.log(countVowels("string")); 
-console.log(countVowels("apple")); 
-console.log(countVowels("sun")); 
+// function countVowels(str) {
+//    return [...str].filter(char => 'aeiou'.includes(char.toLowerCase())).length;
+// }
+
+// console.log(countVowels("string"));
+// console.log(countVowels("apple"));
+// console.log(countVowels("sun"));
 
 /**
  * Frontend validatin
@@ -14,33 +25,25 @@ console.log(countVowels("sun"));
  */
 
 //    const element_soni = {};
-   
+
 //    for (let element of massiv) {
 //        element_soni[element] = (element_soni[element] || 0) + 1;
 //    }
 
 //    let eng_ko_p_soni = 0;
 //    let asosiy_element = null;
-   
+
 //    for (let element in element_soni) {
 //        if (element_soni[element] > eng_ko_p_soni) {
 //            eng_ko_p_soni = element_soni[element];
 //            asosiy_element = element;
 //        }
 //    }
-   
+
 //    return Number(asosiy_element);
 // }
 
-
-// console.log(asosiy_element([1, 2, 3, 4, 5, 4, 3, 4]));  
-
-
-
-
-
-
-
+// console.log(asosiy_element([1, 2, 3, 4, 5, 4, 3, 4]));
 
 /* Project Standarts
 - Logging standarts
@@ -58,7 +61,6 @@ GrafphQL API
 ...
 */
 
-
 /* 
 
 Traditional FD => BSSR (Adminka) => EJS 
@@ -71,37 +73,22 @@ JSON frontend backendan faqat json formatdagi datani qabul qiladi browserda joyl
 // Request join
 // self destroy
 
-
-
-
 // function getDigits(a) {
 //   return [...a].filter(belgi => belgi >= "0" && belgi <= "9").join("");
 // }
 
-
-// console.log(getDigits("m14i1t")); 
-
-
-
+// console.log(getDigits("m14i1t"));
 
 // function getPositive(sonlar) {
 //   const musbatSonlar = sonlar.filter(num => num > 0);
 //   return musbatSonlar.join('');
 // }
 
-
-// console.log(getPositive([1, -4, 2])); 
-  
-
-
-
-
-
+// console.log(getPositive([1, -4, 2]));
 
 // function engKattaQiymatIndeksi(a) {
 //     const engKattaQiymat = Math.max(...a);
 //     return a.findIndex(son => son === engKattaQiymat);
 //   }
-  
-  
-//   console.log(engKattaQiymatIndeksi([5, 21, 12, 21, 8])); 
+
+//   console.log(engKattaQiymatIndeksi([5, 21, 12, 21, 8]));
