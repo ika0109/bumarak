@@ -1,66 +1,69 @@
 import mongoose, { Schema } from "mongoose";
-import {  ProductCollection, ProductSize, ProductStatus, ProductVolume } from "../libs/enums/product.enum";
+import {
+  ProductCollection,
+  ProductSize,
+  ProductStatus,
+  ProductVolume,
+} from "../libs/enums/product.enum";
 
 const productSchema = new Schema(
   {
-productStatus: {
-type: String,
-enum: ProductStatus,
-default: ProductStatus.PAUSE
-},
-productCollection: {
-type: String,
-enum: ProductCollection,
-required: true
-},
-productName: {
-    type: String,
-    required: true
-},
-prodcutPrise:{
-type: Number,
-required: true
+    productStatus: {
+      type: String,
+      enum: ProductStatus,
+      default: ProductStatus.PAUSE,
+    },
+    productCollection: {
+      type: String,
+      enum: ProductCollection,
+      required: true,
+    },
+    productName: {
+      type: String,
+      required: true,
+    },
+    productPrice: {
+      type: Number,
+      required: true,
+    },
+    productLeftCount: {
+      type: Number,
+      required: true,
+    },
+    productSize: {
+      type: String,
+      enum: ProductSize,
+      default: ProductSize.NORMAL,
+    },
+    productVolume: {
+      type: Number,
+      enum: ProductVolume,
+      default: ProductVolume.ONE,
+    },
+    productDeck: {
+      type: String,
+    },
+
+    productImages: {
+      type: [String],
+      default: [],
+    },
+
+    productView: {
+      type: Number,
+      default: 0,
+    },
   },
-productLeftCount: {
-    type: Number,
-required: true
-},
-productSize: {
-    type: String,
-enum: ProductSize,
-default: ProductSize.NORMAL
-},
-productVolume: {
-    type: String,
-    enum: ProductVolume,
-    default: ProductVolume.ONE,
-},
-productDeck: {
-    type: String,
-    required: true
-},
 
-productimages: {
-    type: [String],
- default:[]
-},
-
-productView: {
-    type: Number,
-    default: 0
-}
-},
-   
   { timestamps: true } // createdAt, updatedAt
 );
 
 productSchema.index(
-    {
-        productName: 1,
-        productSize: 1,
-        prodcutVolume: 1
-
-    },
-    {unique: true}
-)
+  {
+    productName: 1,
+    productSize: 1,
+    prodcutVolume: 1,
+  },
+  { unique: true }
+);
 export default mongoose.model("Product", productSchema);
