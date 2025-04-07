@@ -1,20 +1,26 @@
-function getSquareNumbers(numbers) {
-  const result = [];
-  
-  for (let i = 0; i < numbers.length; i++) {
-    const number = numbers[i];
-    result.push({
-      number: number,
-      square: number * number
-    });
-  }
-  
-  return result;
+function palindromCheck(a) {
+  const reversedStr = a.split("").reverse().join("");
+  return a === reversedStr;
 }
 
+console.log(palindromCheck("dad"));
+console.log(palindromCheck("son"));
 
-console.log(getSquareNumbers([1, 2, 3]));
+// function getSquareNumbers(numbers) {
+//   const result = [];
 
+//   for (let i = 0; i < numbers.length; i++) {
+//     const number = numbers[i];
+//     result.push({
+//       number: number,
+//       square: number * number
+//     });
+//   }
+
+//   return result;
+// }
+
+// console.log(getSquareNumbers([1, 2, 3]));
 
 // function countVowels(str) {
 //    return [...str].filter(char => 'aeiou'.includes(char.toLowerCase())).length;
