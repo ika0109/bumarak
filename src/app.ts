@@ -23,14 +23,14 @@ app.use(morgan(MORGAN_FORMAT));
 // 2-SESSION/
 app.use(
   session({
-    secret: String(process.env.SESSION_SECRET),// 2ta vazifasi zashita & database codelar bn req codelarni tekshiradi
+    secret: String(process.env.SESSION_SECRET), // 2ta vazifasi zashita & database codelar bn req codelarni tekshiradi
     cookie: {
       maxAge: 1000 * 3600 * 6, // 6h
     },
     store: store,
 
     resave: true,
-    saveUninitialized: true,// boshqalar ham kirsa session yaratib beradi true bo'lsa false bo'lsa faqat memberlar uchun
+    saveUninitialized: true, // boshqalar ham kirsa session yaratib beradi true bo'lsa false bo'lsa faqat memberlar uchun
   })
 );
 app.use(function (req, res, next) {
@@ -40,6 +40,7 @@ app.use(function (req, res, next) {
 });
 //3-VIEW/
 app.set("views", path.join(__dirname, "views"));
+// console.log("views", __dirname);
 app.set("view engine", "ejs");
 //4-ROUTERS/;
 app.use("/admin", routerAdmin); //BSSR: EJS

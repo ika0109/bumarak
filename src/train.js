@@ -66,8 +66,10 @@ console.log(palindromCheck("son"));
    css => SNAKE                            button_style
 
 - Error Handling 
+
+
 // Request
-Traditional API
+Traditional API (form POST)
 REST API
 GrafphQL API
 ...
