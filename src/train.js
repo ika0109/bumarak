@@ -1,10 +1,10 @@
-function palindromCheck(a) {
-  const reversedStr = a.split("").reverse().join("");
-  return a === reversedStr;
+function calculateSumOfNumbers(arr) {
+  return arr
+    .filter((item) => typeof item === "number")
+    .reduce((a, b) => a + b, 0);
 }
 
-console.log(palindromCheck("dad"));
-console.log(palindromCheck("son"));
+console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
 
 // function getSquareNumbers(numbers) {
 //   const result = [];
