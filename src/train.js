@@ -1,10 +1,8 @@
-function calculateSumOfNumbers(arr) {
-  return arr
-    .filter((item) => typeof item === "number")
-    .reduce((a, b) => a + b, 0);
+function objectToArray(obj) {
+  return Object.entries(obj);
 }
-
-console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
+const result = objectToArray({ a: 10, b: 20 });
+console.log(result);
 
 // function getSquareNumbers(numbers) {
 //   const result = [];
