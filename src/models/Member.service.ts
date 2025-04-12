@@ -1,6 +1,6 @@
 import { MemberUpdateInput } from "./../libs/types/member";
 import MemberModel from "../schema/Member.model";
-import { MemberType } from "../libs/enums/member.enum";
+import { MemberStatus, MemberType } from "../libs/enums/member.enum";
 import { LoginInput, Member, MemberInput } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import * as bcrypt from "bcryptjs";
@@ -30,12 +30,18 @@ class MemberService {
   public async login(input: LoginInput): Promise<Member> {
     const member = await this.memberModel
       .findOne(
-        { memberNick: input.memberNick },
-        { _id: 1, memberNick: 1, memberPassword: 1 }
+        {
+          memberNick: input.memberNick,
+          memberStatus: { $ne: MemberStatus.DELETE },
+        },
+        { _id: 1, memberNick: 1, memberPassword: 1, memberStatus: 1 }
       )
       .exec();
 
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+    else if (member.memberStatus === MemberStatus.BLOCK) {
+      throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
+    }
 
     const ismatch = await bcrypt.compare(
       input.memberPassword,
@@ -100,7 +106,8 @@ class MemberService {
     return result;
   }
 
-  public async updateChosenUSer(input: MemberUpdateInput): Promise<Member> { //qaytaryapti
+  public async updateChosenUSer(input: MemberUpdateInput): Promise<Member> {
+    //qaytaryapti
     input._id = shapeIntoMongooseObjectId(input._id);
     const result = await this.memberModel
       .findByIdAndUpdate({ _id: input._id }, input, { new: true }) //1)filter, 2)option 30update
