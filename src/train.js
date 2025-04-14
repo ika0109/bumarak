@@ -1,9 +1,9 @@
-function objectToArray(obj) {
-  return Object.entries(obj);
+function hasProperty(obj, key) {
+  return key in obj;
 }
-const result = objectToArray({ a: 10, b: 20 });
-console.log(result);
 
+console.log(hasProperty({ name: "BMW", model: "M3" }, "model"));
+console.log(hasProperty({ name: "BMW", model: "M3" }, "year"));
 // function getSquareNumbers(numbers) {
 //   const result = [];
 
