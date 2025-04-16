@@ -1,9 +1,8 @@
-function hasProperty(obj, key) {
-  return key in obj;
+function calculate(str) {
+  let [a, b] = str.split("+");
+  return +a + +b;
 }
-
-console.log(hasProperty({ name: "BMW", model: "M3" }, "model"));
-console.log(hasProperty({ name: "BMW", model: "M3" }, "year"));
+console.log(calculate("1 + 3"));
 // function getSquareNumbers(numbers) {
 //   const result = [];
 
