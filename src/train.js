@@ -1,8 +1,17 @@
-function calculate(str) {
-  let [a, b] = str.split("+");
-  return +a + +b;
+function missingNumber(nums) {
+  nums.sort((a, b) => a - b);
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== i) {
+      return i;
+    }
+  }
+
+  return nums.length; 
+
 }
-console.log(calculate("1 + 3"));
+
+console.log(missingNumber([3, 0, 1])); // 2
 // function getSquareNumbers(numbers) {
 //   const result = [];
 
