@@ -1,17 +1,12 @@
-function missingNumber(nums) {
-  nums.sort((a, b) => a - b);
+function mergeSortedArrays(array1, array2) {
+  const mergedArray = array1.concat(array2);
 
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== i) {
-      return i;
-    }
-  }
-
-  return nums.length; 
-
+  return mergedArray.sort((a, b) => a - b);
 }
 
-console.log(missingNumber([3, 0, 1])); // 2
+const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+console.log(result); 
+
 // function getSquareNumbers(numbers) {
 //   const result = [];
 
