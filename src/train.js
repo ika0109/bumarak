@@ -1,11 +1,14 @@
-function mergeSortedArrays(array1, array2) {
-  const mergedArray = array1.concat(array2);
+function sumOdds(number) {
 
-  return mergedArray.sort((a, b) => a - b);
+  if (number <= 0) {
+    return 0;
+  }
+
+  return Math.floor((number + 1) / 2);
 }
 
-const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
-console.log(result); 
+console.log(sumOdds(9));  
+console.log(sumOdds(11)); 
 
 // function getSquareNumbers(numbers) {
 //   const result = [];
