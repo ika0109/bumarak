@@ -1,14 +1,15 @@
-function sumOdds(number) {
+function countChars(str) {
+  const charCount = {};
 
-  if (number <= 0) {
-    return 0;
+  for (let char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
   }
 
-  return Math.floor((number + 1) / 2);
+  return charCount;
 }
 
-console.log(sumOdds(9));  
-console.log(sumOdds(11)); 
+console.log(countChars("hello"));
+console.log(countChars("Nana"));
 
 // function getSquareNumbers(numbers) {
 //   const result = [];
