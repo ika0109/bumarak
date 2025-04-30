@@ -1,16 +1,14 @@
-function countChars(str) {
-  const charCount = {};
+function chunkArraySplice(array, size) {
+  const arrayCopy = [...array];
+  const result = [];
 
-  for (let char of str) {
-    charCount[char] = (charCount[char] || 0) + 1;
+  while (arrayCopy.length > 0) {
+    result.push(arrayCopy.splice(0, size));
   }
 
-  return charCount;
+  return result;
 }
-
-console.log(countChars("hello"));
-console.log(countChars("Nana"));
-
+console.log(chunkArraySplice([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
 // function getSquareNumbers(numbers) {
 //   const result = [];
 
