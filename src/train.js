@@ -1,14 +1,33 @@
-function chunkArraySplice(array, size) {
-  const arrayCopy = [...array];
-  const result = [];
+function countOccurrences(obj, key) {
+  let count = 0;
 
-  while (arrayCopy.length > 0) {
-    result.push(arrayCopy.splice(0, size));
+  function checkObject(o) {
+    if (o && typeof o === "object") {
+      for (let k in o) {
+        if (k === key) {
+          count++;
+        }
+
+        if (o[k] && typeof o[k] === "object") {
+          checkObject(o[k]);
+        }
+      }
+    }
   }
 
-  return result;
+  checkObject(obj);
+
+  return count;
 }
-console.log(chunkArraySplice([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+
+console.log(
+  countOccurrences(
+    { model: "Bugatti", steer: { model: "HANKOOK", size: 30 } },
+    "model"
+  )
+);
+console.log(countOccurrences({ a: 1, b: { a: 2, c: { a: 3, d: 4 } } }, "a"));
+
 // function getSquareNumbers(numbers) {
 //   const result = [];
 
