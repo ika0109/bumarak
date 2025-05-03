@@ -3,6 +3,7 @@ import memberController from "./controllers/member.controller";
 const router = express.Router();
 import uploader from "./libs/utils/uploader";
 /** Member */
+router.get("/member/restaurant", memberController.getRestaurant);
 router.post("/member/login", memberController.login);
 router.post("/member/signup", memberController.signup);
 router.post(
