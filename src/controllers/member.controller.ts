@@ -142,17 +142,18 @@ memberController.verifyAuth = async (
   }
 };
 
-memberController.retrievefyAuth = async (
+memberController.retrieveAuth = async (
   req: ExtendedRequest,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let member = null;
     const token = req.cookies["accessToken"];
     if (token) req.member = await authService.checkAuth(token);
+
+    next();
   } catch (err) {
-    console.log("Error, retrievefyAuth", err);
+    console.log("Error, retrieveAuth", err);
     next();
   }
 };
