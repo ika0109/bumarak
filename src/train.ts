@@ -1,32 +1,13 @@
-function countOccurrences(obj, key) {
-  let count = 0;
-
-  function checkObject(o) {
-    if (o && typeof o === "object") {
-      for (let k in o) {
-        if (k === key) {
-          count++;
-        }
-
-        if (o[k] && typeof o[k] === "object") {
-          checkObject(o[k]);
-        }
-      }
-    }
-  }
-
-  checkObject(obj);
-
-  return count;
+function findIntersection(arr1: number[], arr2: number[]): number[] {
+  return arr1.filter((item) => arr2.includes(item));
 }
+console.log(findIntersection([1, 2, 3], [3, 2, 0]));
 
-console.log(
-  countOccurrences(
-    { model: "Bugatti", steer: { model: "HANKOOK", size: 30 } },
-    "model"
-  )
-);
-console.log(countOccurrences({ a: 1, b: { a: 2, c: { a: 3, d: 4 } } }, "a"));
+function sumEvens(arr: number[]): number {
+  return arr.filter((num) => num % 2 === 0).reduce((sum, num) => sum + num, 0);
+}
+console.log(sumEvens([1, 2, 3]));
+console.log(sumEvens([1, 2, 3, 2]));
 
 // function getSquareNumbers(numbers) {
 //   const result = [];
