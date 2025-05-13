@@ -26,13 +26,15 @@ class OrderService {
   }
 
   public async createOrder(
+    //parametr
     member: Member,
     input: OrderItemInput[]
   ): Promise<Order> {
-    const memberId = shapeIntoMongooseObjectId(member._id);
+    const memberId = shapeIntoMongooseObjectId(member._id); //argument
     const amount = input.reduce((accumulator: number, item: OrderItemInput) => {
-      return accumulator + item.itemPrice * item.itemQuantity;
-    }, 0);
+      // obshiy zakaz puli
+      return accumulator + item.itemPrice * item.itemQuantity; // item => har bir produkta
+    }, 0); // reduce yordamchi iteration method asosan total value bn ishledi
     const delivery = amount < 100 ? 5 : 0;
 
     try {
@@ -40,12 +42,13 @@ class OrderService {
         orderTotal: amount + delivery,
         orderDelivery: delivery,
         memberId: memberId,
-      });
+      }); // bitta objectni argument sifatida beryapmiz u objectninichida 3 tani database yapmiz
 
       const orderId = newOrder._id;
       console.log("orderId:", orderId);
 
-      await this.recordOrderItem(orderId, input);
+      await this.recordOrderItem(orderId, input); //argument orderimizdda kelayotgan har bir
+      //  itemlarni databasega borib yozib keldi
       return newOrder;
     } catch (err) {
       console.log("Error, model: createOrder:", err);
@@ -54,9 +57,13 @@ class OrderService {
   }
   private async recordOrderItem(
     orderId: ObjectId,
-    input: OrderItemInput[]
+    input: OrderItemInput[] // parametr
   ): Promise<void> {
+    // hich narsa qaytarmaydi
+
+    // promisedlist bizga orderitem collectionga yozib kegan itemlarni array korinishida ozida saqlayapti
     const promisedList = input.map(async (item: OrderItemInput) => {
+      // input => orderimiz
       item.orderId = orderId;
       item.productId = shapeIntoMongooseObjectId(item.productId);
       await this.orderItemModel.create(item);
@@ -64,29 +71,35 @@ class OrderService {
     });
 
     console.log("promisedList:", promisedList);
-    const orderItemsState = await Promise.all(promisedList);
+    const orderItemsState = await Promise.all(promisedList); //promisedlist ichidagi har bir item
+    // databasega borib
+    //yozib kelib success bogandan keyin kuttrib keyingi mantiqqa otkazadi
     console.log("orderItemsState:", orderItemsState);
   }
 
   public async getMyOrders(
     member: Member,
-    inquiry: OrderInquiry
+    inquiry: OrderInquiry //parametr
   ): Promise<Order[]> {
+    // orderlardan tashkil topgan arrayni return
     const memberId = shapeIntoMongooseObjectId(member._id);
-    const matches = { memberId: memberId, orderStatus: inquiry.orderstatus };
+    const matches = { memberId: memberId, orderStatus: inquiry.orderstatus }; // match => filter
 
     const result = await this.orderModel
       .aggregate([
-        { $match: matches },
-        { $sort: { updatedAt: -1 } },
-        { $skip: (inquiry.page - 1) * inquiry.limit },
-        { $limit: inquiry.limit },
+        // complex mantiqlarni yaratyapti
+        //array ichidagi objectlarni ketma ket shakllantirish uchun
+        { $match: matches }, //$ aggregate maxsus operatori
+        { $sort: { updatedAt: -1 } }, // eng ohirida yaratilganlarni
+        { $skip: (inquiry.page - 1) * inquiry.limit }, //otkazvoradi
+        { $limit: inquiry.limit }, // eng boshidagi nechta limit qoyilgan bolsa oshani
         {
           $lookup: {
-            from: "orderItems",
-            localField: "_id",
-            foreignField: "orderId",
-            as: "orderItems",
+            // boshqa collection bn ishlash (data obkelish)
+            from: "orderItems", // orderitemdan qidir
+            localField: "_id", // orderid ob beradi
+            foreignField: "orderId", // orderitems collection ichidagi orderid
+            as: "orderItems", // qaysi nom ostida olib berish
           },
         },
         {
@@ -97,7 +110,16 @@ class OrderService {
             as: "productData",
           },
         },
+        {
+          $lookup: {
+            from: "members",
+            localField: "memberId",
+            foreignField: "_id",
+            as: "Nana",
+          },
+        },
       ])
+
       .exec();
 
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);

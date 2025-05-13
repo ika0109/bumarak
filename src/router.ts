@@ -36,13 +36,16 @@ router.get(
 /** Order */
 router.post(
   "/order/create",
-  memberController.verifyAuth,
+  memberController.verifyAuth, 
   orderController.createOrder
 );
 router.get(
   "/order/all",
   memberController.verifyAuth,
-  orderController.getMyOrders
+  orderController.getMyOrders // 
+  //query => startirofki
+  //param => aynan bitta spesik item (memeber, maxsulot, )topishda ozgaririshda 
+  // korishda yaratiladi
 );
 
 router.post(

@@ -1,13 +1,9 @@
-function findIntersection(arr1: number[], arr2: number[]): number[] {
-  return arr1.filter((item) => arr2.includes(item));
+//@ts-nocheck
+function randomBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-console.log(findIntersection([1, 2, 3], [3, 2, 0]));
 
-function sumEvens(arr: number[]): number {
-  return arr.filter((num) => num % 2 === 0).reduce((sum, num) => sum + num, 0);
-}
-console.log(sumEvens([1, 2, 3]));
-console.log(sumEvens([1, 2, 3, 2]));
+console.log(randomBetween(30, 50));
 
 // function getSquareNumbers(numbers) {
 //   const result = [];

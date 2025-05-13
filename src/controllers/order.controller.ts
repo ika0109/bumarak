@@ -7,11 +7,11 @@ import { OrderInquiry, OrderUpdateInput } from "../libs/types/order";
 import { OrderStatus } from "../libs/enums/order.enum";
 
 const orderService = new OrderService();
-const orderController: T = {};
+const orderController: T = {}; //           member.file qoshilgan uchun extendedreq
 orderController.createOrder = async (req: ExtendedRequest, res: Response) => {
   try {
     console.log("createOrder");
-    const result = await orderService.createOrder(req.member, req.body);
+    const result = await orderService.createOrder(req.member, req.body);//argument
     res.status(HttpCode.CREATED).json(result);
   } catch (err) {
     console.log("Error, createOrder", err);
@@ -22,15 +22,17 @@ orderController.createOrder = async (req: ExtendedRequest, res: Response) => {
 orderController.getMyOrders = async (req: ExtendedRequest, res: Response) => {
   try {
     console.log("getMyOrders");
-    const { page, limit, orderStatus } = req.query;
+    const { page, limit, orderStatus } = req.query;// desrtaction usuli orqalik 
+    //ovolyapmiz
     const inquiry: OrderInquiry = {
       page: Number(page),
       limit: Number(limit),
       orderstatus: orderStatus as OrderStatus,
-    };
+    }; //inquery degan objectga request ichida 
+    // kelayotgan query datalarni shakllantiryapmiz
 
     console.log("inquiry:", inquiry);
-    const result = await orderService.getMyOrders(req.member, inquiry);
+    const result = await orderService.getMyOrders(req.member, inquiry)
     res.status(HttpCode.CREATED).json(result);
   } catch (err) {
     console.log("Error, getMyOrders", err);
