@@ -1,9 +1,11 @@
 //@ts-nocheck
-function randomBetween(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+function celsiusToFahrenheit(celsius) {
+  let fahrenheit = (celsius * 9) / 5 + 32;
+  return fahrenheit;
 }
 
-console.log(randomBetween(30, 50));
+console.log(celsiusToFahrenheit(0));
+console.log(celsiusToFahrenheit(10));
 
 // function getSquareNumbers(numbers) {
 //   const result = [];
