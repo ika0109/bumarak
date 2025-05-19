@@ -1,11 +1,5 @@
 //@ts-nocheck
-function celsiusToFahrenheit(celsius) {
-  let fahrenheit = (celsius * 9) / 5 + 32;
-  return fahrenheit;
-}
 
-console.log(celsiusToFahrenheit(0));
-console.log(celsiusToFahrenheit(10));
 
 // function getSquareNumbers(numbers) {
 //   const result = [];

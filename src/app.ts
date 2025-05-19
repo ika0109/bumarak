@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import path from "path";
 import router from "./router";
@@ -18,10 +19,11 @@ const store = new MongoDBStore({
 // 1-ENTRANCE/
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/uploads", express.static("./uploads"))
+app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser())
+app.use(cors({ credentials: true, origin: true }));
+app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
 // 2-SESSION/
 app.use(
@@ -50,3 +52,5 @@ app.use("/admin", routerAdmin); //BSSR: EJS
 app.use("/", router); // SPA: REACT
 
 export default app;
+
+
