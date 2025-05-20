@@ -1,6 +1,16 @@
 //@ts-nocheck
+function changeNumberInArray(index, arr, newValue) {
 
+    const newArr = [...arr];
+    
 
+    newArr[index] = newValue;
+    
+
+    return newArr;
+}
+
+console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
 // function getSquareNumbers(numbers) {
 //   const result = [];
 
