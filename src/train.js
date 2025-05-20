@@ -1,13 +1,29 @@
 //@ts-nocheck
+
+function removeDuplicate(str) {
+  let result = "";
+
+  for (let i = 0; i < str.length; i++) {
+    if (result.indexOf(str[i]) === -1) {
+      result += str[i];
+    }
+  }
+
+  return result;
+}
+
+// Test cases
+console.log(removeDuplicate("stringg")); // 'string'
+console.log(removeDuplicate("hello")); // 'helo'
+console.log(removeDuplicate("aaaaaa")); // 'a'
+console.log(removeDuplicate("abcdefg")); // 'abcdefg'
+
 function changeNumberInArray(index, arr, newValue) {
+  const newArr = [...arr];
 
-    const newArr = [...arr];
-    
+  newArr[index] = newValue;
 
-    newArr[index] = newValue;
-    
-
-    return newArr;
+  return newArr;
 }
 
 console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
