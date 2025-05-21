@@ -1,5 +1,15 @@
 //@ts-nocheck
+function changeNumberInArray(index, arr, newValue) {
+  const result = [...arr];
 
+  result[index] = newValue;
+
+  return result;
+}
+
+console.log(changeNumberInArray(1, [1, 3, 7, 2], 2)); // [1, 2, 7, 2]
+console.log(changeNumberInArray(0, [5, 8, 3], 10)); // [10, 8, 3]
+console.log(changeNumberInArray(2, [4, 6, 9, 1], 0)); // [4, 6, 0, 1]
 function removeDuplicate(str) {
   let result = "";
 
@@ -12,11 +22,10 @@ function removeDuplicate(str) {
   return result;
 }
 
-// Test cases
-console.log(removeDuplicate("stringg")); // 'string'
-console.log(removeDuplicate("hello")); // 'helo'
-console.log(removeDuplicate("aaaaaa")); // 'a'
-console.log(removeDuplicate("abcdefg")); // 'abcdefg'
+console.log(removeDuplicate("stringg"));
+console.log(removeDuplicate("hello"));
+console.log(removeDuplicate("aaaaaa"));
+console.log(removeDuplicate("abcdefg"));
 
 function changeNumberInArray(index, arr, newValue) {
   const newArr = [...arr];
