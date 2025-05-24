@@ -1,41 +1,22 @@
 //@ts-nocheck
-function changeNumberInArray(index, arr, newValue) {
-  const result = [...arr];
+function capitalizeWords(str) {
+  let words = str.split(" ");
 
-  result[index] = newValue;
-
-  return result;
-}
-
-console.log(changeNumberInArray(1, [1, 3, 7, 2], 2)); // [1, 2, 7, 2]
-console.log(changeNumberInArray(0, [5, 8, 3], 10)); // [10, 8, 3]
-console.log(changeNumberInArray(2, [4, 6, 9, 1], 0)); // [4, 6, 0, 1]
-function removeDuplicate(str) {
-  let result = "";
-
-  for (let i = 0; i < str.length; i++) {
-    if (result.indexOf(str[i]) === -1) {
-      result += str[i];
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > 2) {
+      words[i] = words[i][0].toUpperCase() + words[i].slice(1).toLowerCase();
     }
   }
 
-  return result;
+  return words.join(" ");
 }
 
-console.log(removeDuplicate("stringg"));
-console.log(removeDuplicate("hello"));
-console.log(removeDuplicate("aaaaaa"));
-console.log(removeDuplicate("abcdefg"));
+console.log(capitalizeWords("name should be a string"));
 
-function changeNumberInArray(index, arr, newValue) {
-  const newArr = [...arr];
+console.log(capitalizeWords("i am a good person"));
 
-  newArr[index] = newValue;
+console.log(capitalizeWords("this is my first program"));
 
-  return newArr;
-}
-
-console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
 // function getSquareNumbers(numbers) {
 //   const result = [];
 
