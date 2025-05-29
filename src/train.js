@@ -1,21 +1,27 @@
 //@ts-nocheck
-function capitalizeWords(str) {
-  let words = str.split(" ");
+function convertToSnakeCase(text) {
+  return text.split(' ').join('_');
+}
+console.log(convertToSnakeCase('name should be a string'));
 
-  for (let i = 0; i < words.length; i++) {
-    if (words[i].length > 2) {
-      words[i] = words[i][0].toUpperCase() + words[i].slice(1).toLowerCase();
+
+function findDisappearedNumbers(arr) {
+  const min = Math.min(...arr);
+  const max = Math.max(...arr);
+  const result = [];
+
+  for (let i = min; i <= max; i++) {
+    if (!arr.includes(i)) {
+      result.push(i);
     }
   }
 
-  return words.join(" ");
+  return result;
 }
+console.log(findDisappearedNumbers([1, 3, 4, 7]));
 
-console.log(capitalizeWords("name should be a string"));
 
-console.log(capitalizeWords("i am a good person"));
 
-console.log(capitalizeWords("this is my first program"));
 
 // function getSquareNumbers(numbers) {
 //   const result = [];

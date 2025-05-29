@@ -6,9 +6,10 @@ export interface OrderItem {
   _id: ObjectId;
   itemQuantity: number;
   itemPrice: number;
-  orderId?: ObjectId;
-  createdAt: Date;
-  updatedAt: Date;
+  orderId: ObjectId;
+  productId: ObjectId;
+  createAt: Date;
+  updateAt: Date;
 }
 
 export interface Order {
