@@ -1,27 +1,11 @@
 //@ts-nocheck
-function convertToSnakeCase(text) {
-  return text.split(' ').join('_');
+function delayHelloWorld(message) {
+  setTimeout(function () {
+    console.log(message);
+  }, 3000);
 }
-console.log(convertToSnakeCase('name should be a string'));
 
-
-function findDisappearedNumbers(arr) {
-  const min = Math.min(...arr);
-  const max = Math.max(...arr);
-  const result = [];
-
-  for (let i = min; i <= max; i++) {
-    if (!arr.includes(i)) {
-      result.push(i);
-    }
-  }
-
-  return result;
-}
-console.log(findDisappearedNumbers([1, 3, 4, 7]));
-
-
-
+delayHelloWorld("Hello World!");
 
 // function getSquareNumbers(numbers) {
 //   const result = [];
