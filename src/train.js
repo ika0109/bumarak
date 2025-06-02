@@ -1,11 +1,8 @@
 //@ts-nocheck
-function delayHelloWorld(message) {
-  setTimeout(function () {
-    console.log(message);
-  }, 3000);
+function reduceNestedArray(arr) {
+  return arr.flat(Infinity).reduce((sum, num) => sum + num, 0);
 }
-
-delayHelloWorld("Hello World!");
+console.log(reduceNestedArray([1, [1, 2, [4]]]));
 
 // function getSquareNumbers(numbers) {
 //   const result = [];
